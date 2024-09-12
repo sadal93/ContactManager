@@ -57,6 +57,11 @@ namespace ContactManager.Controllers
                 return BadRequest();
             }
 
+            if (!_contactValidationService.ValidateContact(contact))
+            {
+                return BadRequest();
+            }
+
             _context.Entry(contact).State = EntityState.Modified;
 
             try
